@@ -16,11 +16,8 @@ function App() {
   }
 
   const deleteElement = (element) => {
-    const arr = list.filter((name) => {
-      if (name == element) {
-        return false
-      }
-      else return true 
+    const arr = list.filter((task) => {
+     return task != element
     })
     setList(arr)
   }
