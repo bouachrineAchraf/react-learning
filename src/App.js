@@ -1,12 +1,14 @@
 import './App.css';
 import {User} from "./user"
 import {Planet} from './planet'
-import {useState} from "react"
+import {useEffect, useState} from "react"
 
 function App() {
- 
+ useEffect(() => {
+  console.log("componsant mounted");
+ }, [])
  return (
-  <div></div>
+  <div> i am APP component</div>
   )
    
 }
