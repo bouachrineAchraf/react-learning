@@ -7,7 +7,13 @@ function App() {
   const [list, setList] = useState([]);
   const [task, setTask] = useState("")
   const addTast = () => {
-  const newlist = [...list, task]
+
+    const taskObject = {
+      id: list.length > 0 ? list[list.length - 1].id +1 : 1,
+      name : task
+    }
+    const newlist = [...list, taskObject]
+    console.log("🚀 ~ file: App.js:16 ~ addTast ~ ewlist:", newlist)
     setList(newlist);
   }
 
@@ -15,9 +21,9 @@ function App() {
     setTask(event.target.value)
   }
 
-  const deleteElement = (element) => {
+  const deleteElement = (id) => {
     const arr = list.filter((task) => {
-     return task != element
+     return task.id != id
     })
     setList(arr)
   }
@@ -26,7 +32,7 @@ function App() {
       <input onChange={handleTask} />
       <button onClick={addTast}>Add task</button>
       {list.map((element) => {
-        return <div>{element} <button onClick={() => deleteElement(element)}>X</button></div>
+        return <div>{element.name} <button onClick={() => deleteElement(element.id)}>X</button></div>
       })}
     </div>
   )
