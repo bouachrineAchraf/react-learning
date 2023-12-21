@@ -5,20 +5,16 @@ import {useEffect, useState} from "react"
 import Axios from "axios"
 
 function App() {
-  const [fact, setFact] = useState("")
-  const fetch = () => {
-   Axios.get("https://catfact.ninja/fact").then((res) => setFact(res.data.fact))
-  }
- useEffect(() => {
-  console.log("componsant mounted");
- }, [])
-
- //fetch("https://catfact.ninja/fact").then((data) => data.json()).then((data) => console.log(data))
- Axios.get("https://catfact.ninja/fact").then((res) => console.log("axios object : ", res.data))
+ const [name, setName] = useState("")
+ const [age, setAge] = useState("")
+const fetch = () => {
+  Axios.get("https://api.agify.io/?name="+name).then((res) => setAge(res.data.age))
+}
  return (
   <div> 
-    <button onClick={fetch}>Generate Cat Fact</button>
-    <div>{fact}</div>
+    <input placeholder='ex, achraf' onChange={(event) => setName(event.target.value)}/>
+    <button onClick={fetch}>Get Age</button>
+    <div>the age of {name} is : {age} </div>
   </div>
   )
    
