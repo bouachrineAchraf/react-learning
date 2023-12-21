@@ -2,6 +2,7 @@ import './App.css';
 import { User } from "./user"
 import { Planet } from './planet'
 import { useState } from "react"
+import {Task} from "./task"
 
 function App() {
   const [list, setList] = useState([]);
@@ -13,7 +14,6 @@ function App() {
       name : task
     }
     const newlist = [...list, taskObject]
-    console.log("🚀 ~ file: App.js:16 ~ addTast ~ ewlist:", newlist)
     setList(newlist);
   }
 
@@ -32,7 +32,7 @@ function App() {
       <input onChange={handleTask} />
       <button onClick={addTast}>Add task</button>
       {list.map((element) => {
-        return <div>{element.name} <button onClick={() => deleteElement(element.id)}>X</button></div>
+        return <Task element={element} delete={deleteElement}></Task>
       })}
     </div>
   )
