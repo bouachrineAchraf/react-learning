@@ -9,18 +9,17 @@ import { Menu } from "./pages/Menu"
 import { Navbar } from './pages/Navbar';
 import { Profile } from './pages/profile';
 import { SetProfile } from './pages/SetProfile';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 export const AppContect = createContext()
 
 function App() {
-  const [profile, setProfile] = useState("achraf");
+  const client = new QueryClient();
   return (
     <div >
-      <AppContect.Provider value={{profile, setProfile}}>
-      {profile}
+      <QueryClientProvider client={client}>
       <Router>
         <Navbar />
-
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
@@ -29,7 +28,7 @@ function App() {
           <Route path="*" element={<h1>Page Not Found</h1>} />
         </Routes>
       </Router>
-      </AppContect.Provider>
+      </QueryClientProvider>
     </div>
   )
 
