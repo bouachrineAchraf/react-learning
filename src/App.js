@@ -10,25 +10,14 @@ import { Navbar } from './pages/Navbar';
 import { Profile } from './pages/profile';
 import { SetProfile } from './pages/SetProfile';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
+import { Form } from './pages/Form';
 export const AppContect = createContext()
 
 function App() {
   const client = new QueryClient();
   return (
     <div >
-      <QueryClientProvider client={client}>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<h1>Page Not Found</h1>} />
-        </Routes>
-      </Router>
-      </QueryClientProvider>
+      <Form />
     </div>
   )
 
