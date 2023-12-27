@@ -1,13 +1,15 @@
 import './App.css';
 import { useEffect, useState} from "react"
-
+import {useCount} from './useCounthook'
 
 function App() {
-  const [isVisible, setIsVisible] = useState(true);
+  const [val, increase, decrease, restart] = useCount(0)
   return (
     <div >
-      <button onClick={() => {setIsVisible((value) => !value)}}>{isVisible ? "Hide" : "Show"}</button>
-      <p>{isVisible && <h1>Hi Achraf .</h1>}</p>
+      {val}
+      <button onClick={increase}>increase</button>
+      <button onClick={decrease}>decrease</button>
+      <button onClick={restart}>restart</button>
     </div>
   )
 
